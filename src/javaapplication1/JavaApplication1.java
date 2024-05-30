@@ -4,9 +4,11 @@
  */
 package javaapplication1;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Armando_Hernandez_Mo
+ * @author Aulas Heredia
  */
 public class JavaApplication1 {
 
@@ -14,7 +16,13 @@ public class JavaApplication1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        double nota = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite su nota del curso anterior:")); 
+        if (nota >= 70) {
+                JOptionPane.showMessageDialog(null, "SI aprobo el curso ");
+            }else 
+           JOptionPane.showMessageDialog(null, "Reprobo el curso ");
+       
+        
+        }
     }
-    
-}
+   
