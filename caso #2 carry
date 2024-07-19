@@ -1,0 +1,66 @@
+    public static void eliminarHabitat(RegistroHabitats[] arrHabitats) {
+        String nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del hábitat a eliminar:");
+        
+        for (int i = 0; i < arrHabitats.length; i++) {
+            if (arrHabitats[i] != null && arrHabitats[i].getNombre().equalsIgnoreCase(nombre)) {
+                arrHabitats[i] = null;
+                JOptionPane.showMessageDialog(null, "Hábitat eliminado exitosamente.");
+                return;
+            }
+        }
+        
+        JOptionPane.showMessageDialog(null, "No se encontró un hábitat con ese nombre.");
+    }
+    
+    public static void consultarHabitat(RegistroHabitats[] arrHabitats) {
+        String nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del hábitat a consultar:");
+        
+        for (int i = 0; i < arrHabitats.length; i++) {
+            if (arrHabitats[i] != null && arrHabitats[i].getNombre().equalsIgnoreCase(nombre)) {
+                JOptionPane.showMessageDialog(null, arrHabitats[i].getNombre() + " " + arrHabitats[i].getTipoAmbiente() + " " + arrHabitats[i].getCapacidad());
+                return;
+            }
+        }
+        
+        JOptionPane.showMessageDialog(null, "No se encontró un hábitat con ese nombre.");
+    }
+    
+    public static void modificarHabitat(RegistroHabitats[] arrHabitats) {
+        String nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del hábitat a modificar:");
+        
+        for (int i = 0; i < arrHabitats.length; i++) {
+            if (arrHabitats[i] != null && arrHabitats[i].getNombre().equalsIgnoreCase(nombre)) {
+                String nuevoNombre = JOptionPane.showInputDialog(null, "Ingrese el nuevo nombre del hábitat:");
+                String nuevoTipoAmbiente = JOptionPane.showInputDialog(null, "Ingrese el nuevo tipo de ambiente del hábitat:");
+                int nuevaCapacidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la nueva capacidad del hábitat:"));
+                
+                arrHabitats[i].setNombre(nuevoNombre);
+                arrHabitats[i].setTipoAmbiente(nuevoTipoAmbiente);
+                arrHabitats[i].setCapacidad(nuevaCapacidad);
+                
+                JOptionPane.showMessageDialog(null, "Hábitat modificado exitosamente.");
+                return;
+            }
+        }
+        
+        JOptionPane.showMessageDialog(null, "No se encontró un hábitat con ese nombre.");
+    }
+    
+    public static void main(String[] args) {
+        int tamañoArreglo = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el tamaño del arreglo:"));
+
+        RegistroHabitats[] arrHabitats = new RegistroHabitats[tamañoArreglo];
+
+        pideinfo(arrHabitats);
+        muestrainfo(arrHabitats);
+        
+        int opcion;
+        do {
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(null, "Seleccione una opción:\n1. Agregar hábitat\n2. Eliminar hábitat\n3. Consultar hábitat\n4. Modificar hábitat\n5. Salir"));
+            
+            switch (opcion) {
+                case 1:
+                    agregarHabitat(arrHabitats);
+                    break;
+                case 2:
+                    eliminarHabitat(arrHabitats);
