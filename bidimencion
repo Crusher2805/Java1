@@ -1,0 +1,80 @@
+import javax.swing.JOptionPane;
+
+public class MatrizCalculos {
+    public static void main(String[] args) {
+        // Solicitar el tamaño de la matriz al usuario
+        String input = JOptionPane.showInputDialog("Ingrese el tamaño de la matriz: ");
+        int N = Integer.parseInt(input);
+
+        // Crear la matriz
+        int[][] matriz = new int[N][N];
+
+        // Solicitar los valores de la matriz al usuario
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                input = JOptionPane.showInputDialog("Ingrese el valor para la posición (" + i + ", " + j + "): ");
+                matriz[i][j] = Integer.parseInt(input);
+            }
+        }
+
+        // Calcular la suma de las 4 esquinas
+        int sumaEsquinas = matriz[0][0] + matriz[0][N-1] + matriz[N-1][0] + matriz[N-1][N-1];
+
+        // Calcular la suma de la diagonal
+        int sumaDiagonal = 0;
+        for (int i = 0; i < N; i++) {
+            sumaDiagonal += matriz[i][i];
+        }
+
+        // Calcular la suma de la diagonal inversa
+        int sumaDiagonalInversa = 0;
+        for (int i = 0; i < N; i++) {
+            sumaDiagonalInversa += matriz[i][N-1-i];
+        }
+
+        // Obtener el número mayor de toda la matriz
+        int mayor = matriz[0][0];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (matriz[i][j] > mayor) {
+                    mayor = matriz[i][j];
+                }
+            }
+        }
+
+        // Mostrar los resultados utilizando JOptionPane
+        JOptionPane.showMessageDialog(null, "La suma de las 4 esquinas es: " + sumaEsquinas);
+        JOptionPane.showMessageDialog(null, "La suma de la diagonal es: " + sumaDiagonal);
+        JOptionPane.showMessageDialog(null, "La suma de la diagonal inversa es: " + sumaDiagonalInversa);
+        JOptionPane.showMessageDialog(null, "El número mayor de toda la matriz es: " + mayor);
+    }
+}
+
+import javax.swing.JOptionPane;
+
+public class MatrizCalculos {
+    public static void main(String[] args) {
+        // Crear la matriz de 3 x 3
+        int[][] matriz = new int[3][3];
+
+        // Llenar la matriz con números enteros aleatorios entre 1 y 1000
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matriz[i][j] = (int) (Math.random() * 1000) + 1;
+            }
+        }
+
+        // Encontrar el valor menor almacenado en la matriz
+        int menor = matriz[0][0];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matriz[i][j] < menor) {
+                    menor = matriz[i][j];
+                }
+            }
+        }
+
+        // Mostrar el valor menor utilizando JOptionPane
+        JOptionPane.showMessageDialog(null, "El valor menor almacenado en la matriz es: " + menor);
+    }
+}
